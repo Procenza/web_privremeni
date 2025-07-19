@@ -73,48 +73,51 @@
         }
 
         .logo-img {
-            height: 70px;
+            height: 100px;
             width: auto;
-            max-width: 180px;
+            max-width: 250px;
             object-fit: contain;
         }
 
         /* ENSO Progress Circle */
         .enso-progress {
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
             margin: 0 auto 2rem;
             position: relative;
             animation: fadeIn 1s ease-out 0.3s both;
+            background: transparent;
+            padding: 20px;
         }
 
         .enso-svg {
             width: 100%;
             height: 100%;
             transform: rotate(-90deg);
+            background: transparent;
         }
 
         .enso-bg {
             fill: none;
             stroke: var(--light-gray);
-            stroke-width: 25;
+            stroke-width: 20;
             opacity: 0.3;
         }
 
         .enso-progress-circle {
             fill: none;
             stroke: var(--primary-teal);
-            stroke-width: 25;
+            stroke-width: 20;
             stroke-linecap: round;
-            stroke-dasharray: 565.48;
-            stroke-dashoffset: 565.48;
-            animation: fillProgress 3s ease-out forwards;
+            stroke-dasharray: 502.65;
+            stroke-dashoffset: 502.65;
+            animation: fillProgress 5s ease-out forwards;
             filter: drop-shadow(0 0 10px rgba(53, 151, 174, 0.3));
         }
 
         @keyframes fillProgress {
             to {
-                stroke-dashoffset: 5.65; /* 99% of circumference */
+                stroke-dashoffset: 5.03; /* 99% of circumference */
             }
         }
 
@@ -162,52 +165,15 @@
             margin-bottom: 1.25rem;
         }
 
-        .form-group {
-            margin-bottom: 0.75rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 2px solid transparent;
-            border-radius: 5px;
+        .form-wrapper {
+            position: relative;
             background: var(--off-white);
-            transition: all 0.3s ease;
-            font-family: inherit;
-            font-size: 1rem;
+            border-radius: 5px;
+            padding: 2px;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-teal);
+        .form-wrapper iframe {
             background: white;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 0.875rem 2rem;
-            border: none;
-            border-radius: 30px;
-            background: var(--primary-teal);
-            color: white;
-            font-weight: 500;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 0.75rem;
-        }
-
-        .btn:hover {
-            background: var(--dark-teal);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 30px rgba(53, 151, 174, 0.4);
         }
 
         /* Contact info */
@@ -235,21 +201,7 @@
             color: var(--dark-teal);
         }
 
-        /* Success message */
-        .success-message {
-            display: none;
-            background: rgba(53, 151, 174, 0.1);
-            color: var(--dark-teal);
-            padding: 0.75rem;
-            border-radius: 5px;
-            margin-top: 0.75rem;
-            animation: fadeIn 0.3s ease-out;
-            font-size: 0.9rem;
-        }
-
-        .success-message.show {
-            display: block;
-        }
+        /* Success message - remove since Microsoft Forms handles this */
 
         /* Animations */
         @keyframes fadeInDown {
@@ -304,18 +256,20 @@
             }
 
             .logo-img {
-                height: 50px;
+                height: 60px;
+                max-width: 150px;
             }
 
             .enso-progress {
-                width: 150px;
-                height: 150px;
+                width: 180px;
+                height: 180px;
                 margin-bottom: 1.5rem;
+                padding: 15px;
             }
 
             .enso-bg,
             .enso-progress-circle {
-                stroke-width: 20;
+                stroke-width: 15;
             }
 
             .progress-text {
@@ -341,19 +295,8 @@
                 margin-bottom: 1rem;
             }
 
-            .form-group {
-                margin-bottom: 0.625rem;
-            }
-
-            .form-group input,
-            .form-group textarea {
-                padding: 0.625rem 0.875rem;
-                font-size: 0.95rem;
-            }
-
-            .btn {
-                padding: 0.75rem 1.5rem;
-                font-size: 0.95rem;
+            .form-wrapper iframe {
+                height: 500px !important;
             }
 
             .contact-info {
@@ -369,8 +312,14 @@
         /* Very small devices */
         @media (max-width: 360px) {
             .enso-progress {
-                width: 120px;
-                height: 120px;
+                width: 140px;
+                height: 140px;
+                padding: 10px;
+            }
+
+            .enso-bg,
+            .enso-progress-circle {
+                stroke-width: 12;
             }
 
             .progress-text {
@@ -396,9 +345,9 @@
 
         <!-- ENSO Progress Circle -->
         <div class="enso-progress">
-            <svg class="enso-svg" viewBox="0 0 200 200">
-                <circle class="enso-bg" cx="100" cy="100" r="90"></circle>
-                <circle class="enso-progress-circle" cx="100" cy="100" r="90"></circle>
+            <svg class="enso-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <circle class="enso-bg" cx="100" cy="100" r="80"></circle>
+                <circle class="enso-progress-circle" cx="100" cy="100" r="80"></circle>
             </svg>
             <div class="progress-text">99%</div>
         </div>
@@ -410,23 +359,20 @@
         <!-- Contact Form -->
         <div class="contact-section">
             <h2>Kontaktirajte nas već danas</h2>
-            <form id="contactForm">
-                <div class="form-group">
-                    <input type="text" id="name" placeholder="Ime i prezime" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" placeholder="Email adresa" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="company" placeholder="Tvrtka/Organizacija (opcionalno)">
-                </div>
-                <div class="form-group">
-                    <textarea id="message" placeholder="Vaša poruka" rows="3" required></textarea>
-                </div>
-                <button type="submit" class="btn">Pošalji →</button>
-            </form>
-            <div class="success-message" id="successMessage">
-                Hvala! Javit ćemo vam se uskoro.
+            <div class="form-wrapper">
+                <iframe width="100%" 
+                        height="600px" 
+                        src="https://forms.office.com/Pages/ResponsePage.aspx?id=9AJmnPNQRkqXqsJqGWMSOJU32cX4VFFCniEkP-1NNjVUM1oyOFExQ1NCMUFDWkVCREJPOFJLVFcwNS4u&embed=true" 
+                        frameborder="0" 
+                        marginwidth="0" 
+                        marginheight="0" 
+                        style="border: none; max-width:100%; max-height:100vh; border-radius: 5px;" 
+                        allowfullscreen 
+                        webkitallowfullscreen 
+                        mozallowfullscreen 
+                        msallowfullscreen>
+                    Učitavanje...
+                </iframe>
             </div>
         </div>
 
@@ -456,35 +402,52 @@
         };
 
         // Start animation when page loads
-        setTimeout(animateProgress, 1500);
+        setTimeout(animateProgress, 2000);
 
-        // Form handling
+        // Form handling with Power Automate
         const contactForm = document.getElementById('contactForm');
         const successMessage = document.getElementById('successMessage');
 
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
+            const submitBtn = contactForm.querySelector('.btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Šalje se...';
+            submitBtn.disabled = true;
+
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
-                company: document.getElementById('company').value,
+                company: document.getElementById('company').value || 'Nije navedeno',
                 message: document.getElementById('message').value
             };
 
-            // Here you would normally send data to server
-            // For now, we'll use mailto
-            const subject = `Novi kontakt - ${formData.name}`;
-            const body = `Ime: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0ATvrtka: ${formData.company || 'Nije navedeno'}%0D%0A%0D%0APoruka:%0D%0A${formData.message}`;
-            
-            window.location.href = `mailto:info@procenza.hr?subject=${subject}&body=${body}`;
-            
-            // Show success message
-            contactForm.reset();
-            successMessage.classList.add('show');
-            setTimeout(() => {
-                successMessage.classList.remove('show');
-            }, 5000);
+            try {
+                // Zamijenite URL s vašim Power Automate HTTP trigger URL-om
+                const response = await fetch('YOUR_POWER_AUTOMATE_URL', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    successMessage.classList.add('show');
+                    contactForm.reset();
+                    setTimeout(() => {
+                        successMessage.classList.remove('show');
+                    }, 5000);
+                } else {
+                    throw new Error('Greška pri slanju');
+                }
+            } catch (error) {
+                alert('Greška pri slanju poruke. Molimo pokušajte ponovno.');
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
         });
 
         // Remove parallax effect on mobile devices
