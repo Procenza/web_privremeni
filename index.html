@@ -350,6 +350,175 @@
             transform: none;
         }
 
+        /* GDPR Checkbox */
+        .gdpr-consent {
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .gdpr-consent input[type="checkbox"] {
+            margin-top: 0.25rem;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--primary-teal);
+            flex-shrink: 0;
+        }
+
+        .gdpr-consent label {
+            font-size: 0.85rem;
+            color: var(--medium-gray);
+            line-height: 1.5;
+            cursor: pointer;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .gdpr-consent label a {
+            color: var(--primary-teal);
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .gdpr-consent label a:hover {
+            color: var(--dark-teal);
+        }
+
+        .gdpr-consent.error {
+            animation: shake 0.4s;
+        }
+
+        .gdpr-consent.error label {
+            color: var(--error-red);
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* Privacy Policy Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            max-width: 700px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            padding: 2rem 2rem 1rem 2rem;
+            border-bottom: 2px solid var(--light-gray);
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: var(--dark-gray);
+            font-size: 1.75rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--medium-gray);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--light-gray);
+            color: var(--dark-gray);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-body h3 {
+            color: var(--primary-teal);
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.25rem;
+        }
+
+        .modal-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .modal-body p {
+            color: var(--medium-gray);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .modal-body ul {
+            margin: 1rem 0 1rem 1.5rem;
+            color: var(--medium-gray);
+        }
+
+        .modal-body ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-body strong {
+            color: var(--dark-gray);
+        }
+
+        /* Data protection notice */
+        .data-notice {
+            background: rgba(53, 151, 174, 0.05);
+            border-left: 4px solid var(--primary-teal);
+            padding: 1rem;
+            margin-top: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.85rem;
+            color: var(--medium-gray);
+            line-height: 1.5;
+        }
+
+        .data-notice strong {
+            color: var(--dark-gray);
+        }
+
         /* Status messages */
         .form-status {
             margin-top: 1rem;
@@ -523,6 +692,54 @@
             .form-group textarea {
                 padding: 0.75rem;
             }
+
+            .modal-content {
+                margin: 1rem;
+                max-height: 90vh;
+            }
+
+            .modal-header {
+                padding: 1.5rem 1.5rem 1rem 1.5rem;
+            }
+
+            .modal-header h2 {
+                font-size: 1.5rem;
+                padding-right: 2rem;
+            }
+
+            .modal-close {
+                top: 1rem;
+                right: 1rem;
+                width: 36px;
+                height: 36px;
+                font-size: 1.75rem;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            .modal-body h3 {
+                font-size: 1.1rem;
+            }
+
+            .modal-body p,
+            .modal-body ul {
+                font-size: 0.9rem;
+            }
+
+            .gdpr-consent {
+                gap: 0.5rem;
+            }
+
+            .gdpr-consent label {
+                font-size: 0.8rem;
+            }
+
+            .data-notice {
+                font-size: 0.8rem;
+                padding: 0.875rem;
+            }
         }
     </style>
 </head>
@@ -579,6 +796,18 @@
                         <label for="message">Vaša poruka</label>
                         <textarea id="message" name="message" rows="4" required></textarea>
                     </div>
+
+                    <div class="gdpr-consent" id="gdprConsent">
+                        <input type="checkbox" id="gdprCheckbox" name="gdpr_consent" required>
+                        <label for="gdprCheckbox">
+                            Prihvaćam <a href="#" id="privacyLink">Politiku privatnosti</a> i slažem se da Procenza obrađuje moje osobne podatke u svrhu kontaktiranja i odgovaranja na moj upit. *
+                        </label>
+                    </div>
+
+                    <div class="data-notice">
+                        <strong>🔒 Zaštita podataka:</strong> Vaši podaci se koriste isključivo za odgovor na vaš upit i neće biti dijeljeni s trećim stranama. Imate pravo na pristup, ispravak i brisanje vaših podataka u bilo kojem trenutku.
+                    </div>
+
                     <button type="submit" class="btn">Pošaljite poruku →</button>
                 </form>
                 
@@ -594,6 +823,103 @@
                     <p>Preferirate direktan kontakt?</p>
                     <p><a href="mailto:info@procenza.hr">info@procenza.hr</a></p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div class="modal" id="privacyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Politika privatnosti</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Datum posljednje izmjene:</strong> Studeni 2024</p>
+
+                <h3>1. Voditelj obrade podataka</h3>
+                <p>
+                    <strong>Procenza</strong><br>
+                    Email: info@procenza.hr
+                </p>
+
+                <h3>2. Koje podatke prikupljamo</h3>
+                <p>Putem kontakt forme prikupljamo sljedeće osobne podatke:</p>
+                <ul>
+                    <li><strong>Ime i prezime</strong> - za osobnu identifikaciju i obraćanje</li>
+                    <li><strong>Email adresa</strong> - za komunikaciju i odgovor na vaš upit</li>
+                    <li><strong>Naziv tvrtke/organizacije</strong> (opcionalno) - za bolji kontekst upita</li>
+                    <li><strong>Poruka</strong> - sadržaj vašeg upita ili zahtjeva</li>
+                </ul>
+
+                <h3>3. Svrha obrade podataka</h3>
+                <p>Vaše osobne podatke obrađujemo isključivo u sljedeće svrhe:</p>
+                <ul>
+                    <li>Odgovaranje na vaše upite i zahtjeve</li>
+                    <li>Pružanje informacija o našim uslugama</li>
+                    <li>Uspostavljanje poslovne komunikacije</li>
+                </ul>
+
+                <h3>4. Pravna osnova obrade</h3>
+                <p>
+                    Obrađujemo vaše podatke na temelju <strong>vašeg pristanka</strong> (članak 6. stavak 1. točka (a) GDPR-a)
+                    koji dajete označavanjem potvrdnog polja u kontakt formi.
+                </p>
+
+                <h3>5. Dijeljenje podataka</h3>
+                <p>
+                    Vaši podaci <strong>neće biti dijeljeni</strong> s trećim stranama osim u sljedećim slučajevima:
+                </p>
+                <ul>
+                    <li>Formspree.io - servis za obradu kontakt forme (u skladu s njihovom politikom privatnosti)</li>
+                    <li>Kada je to zakonski obvezno (sudski nalozi, regulatorna tijela)</li>
+                </ul>
+
+                <h3>6. Rok čuvanja podataka</h3>
+                <p>
+                    Vaše podatke čuvamo dok je potrebno za izvršavanje svrhe prikupljanja ili dok ne zatražite njihovo brisanje.
+                    Maksimalno razdoblje čuvanja je <strong>3 godine</strong> od posljednjeg kontakta.
+                </p>
+
+                <h3>7. Vaša prava</h3>
+                <p>U skladu s GDPR-om, imate sljedeća prava:</p>
+                <ul>
+                    <li><strong>Pravo na pristup</strong> - možete zatražiti kopiju svojih podataka</li>
+                    <li><strong>Pravo na ispravak</strong> - možete ispraviti netočne podatke</li>
+                    <li><strong>Pravo na brisanje</strong> ("pravo na zaborav")</li>
+                    <li><strong>Pravo na ograničenje obrade</strong></li>
+                    <li><strong>Pravo na prenosivost podataka</strong></li>
+                    <li><strong>Pravo na prigovor</strong> obradi podataka</li>
+                    <li><strong>Pravo na povlačenje pristanka</strong> u bilo kojem trenutku</li>
+                </ul>
+                <p>
+                    Za ostvarivanje svojih prava kontaktirajte nas na: <strong>info@procenza.hr</strong>
+                </p>
+
+                <h3>8. Sigurnost podataka</h3>
+                <p>
+                    Primjenjujemo odgovarajuće tehničke i organizacijske mjere zaštite vaših podataka
+                    od neovlaštenog pristupa, gubitka ili zlouporabe.
+                </p>
+
+                <h3>9. Kolačići (Cookies)</h3>
+                <p>
+                    Ova web stranica trenutno ne koristi kolačiće za praćenje korisnika.
+                    Formspree.io može koristiti tehničke kolačiće za funkcionalnost forme.
+                </p>
+
+                <h3>10. Kontakt za pitanja o privatnosti</h3>
+                <p>
+                    Ako imate bilo kakvih pitanja o obradi vaših osobnih podataka ili želite ostvariti svoja prava,
+                    kontaktirajte nas na: <strong>info@procenza.hr</strong>
+                </p>
+
+                <h3>11. Pravo na prigovor nadzornom tijelu</h3>
+                <p>
+                    Imate pravo podnijeti pritužbu nadležnom nadzornom tijelu za zaštitu osobnih podataka:<br>
+                    <strong>Agencija za zaštitu osobnih podataka (AZOP)</strong><br>
+                    Web: <a href="https://azop.hr" target="_blank" rel="noopener">www.azop.hr</a>
+                </p>
             </div>
         </div>
     </div>
@@ -619,19 +945,72 @@
         // Start animation when page loads
         setTimeout(animateProgress, 2000);
 
+        // Privacy Policy Modal
+        const privacyModal = document.getElementById('privacyModal');
+        const privacyLink = document.getElementById('privacyLink');
+        const modalClose = document.getElementById('modalClose');
+
+        // Open modal
+        privacyLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            privacyModal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+
+        // Close modal - X button
+        modalClose.addEventListener('click', () => {
+            privacyModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal - Click outside
+        privacyModal.addEventListener('click', (e) => {
+            if (e.target === privacyModal) {
+                privacyModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close modal - Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && privacyModal.classList.contains('show')) {
+                privacyModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
         // Form handling with Formspree
         const contactForm = document.getElementById('contactForm');
         const successMessage = document.getElementById('successMessage');
         const errorMessage = document.getElementById('errorMessage');
         const submitBtn = contactForm.querySelector('.btn');
+        const gdprCheckbox = document.getElementById('gdprCheckbox');
+        const gdprConsent = document.getElementById('gdprConsent');
 
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             // Reset messages
             successMessage.classList.remove('show');
             errorMessage.classList.remove('show');
-            
+            gdprConsent.classList.remove('error');
+
+            // Validate GDPR consent
+            if (!gdprCheckbox.checked) {
+                gdprConsent.classList.add('error');
+                errorMessage.textContent = '✗ Molimo prihvatite Politiku privatnosti prije slanja poruke.';
+                errorMessage.classList.add('show');
+
+                // Scroll to checkbox
+                gdprConsent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                setTimeout(() => {
+                    errorMessage.classList.remove('show');
+                    gdprConsent.classList.remove('error');
+                }, 5000);
+                return;
+            }
+
             // Show loading state
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Šalje se...';
@@ -651,7 +1030,7 @@
                 if (response.ok) {
                     successMessage.classList.add('show');
                     contactForm.reset();
-                    
+
                     // Hide success message after 5 seconds
                     setTimeout(() => {
                         successMessage.classList.remove('show');
@@ -660,8 +1039,9 @@
                     throw new Error('Form submission failed');
                 }
             } catch (error) {
+                errorMessage.textContent = '✗ Ups! Nešto je pošlo po zlu. Molimo pokušajte ponovno.';
                 errorMessage.classList.add('show');
-                
+
                 // Hide error message after 5 seconds
                 setTimeout(() => {
                     errorMessage.classList.remove('show');
@@ -669,6 +1049,13 @@
             } finally {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
+            }
+        });
+
+        // Remove error state when checkbox is checked
+        gdprCheckbox.addEventListener('change', () => {
+            if (gdprCheckbox.checked) {
+                gdprConsent.classList.remove('error');
             }
         });
 
