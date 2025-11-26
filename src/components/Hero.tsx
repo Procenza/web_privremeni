@@ -41,11 +41,7 @@ const Hero = () => {
               className="col-span-12 lg:col-span-4 lg:col-start-9"
             >
               <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                Gradimo nešto posebno za vaš posao.
-              </p>
-              <p className="text-base text-slate-500 dark:text-slate-500 leading-relaxed">
-                Procenza donosi novo iskustvo strateškog savjetovanja.
-                Priprema je u tijeku. Bit će vrijedno čekanja.
+                Pripremamo inovativna rješenja za vaše izazove.
               </p>
 
               <div className="pt-6 border-t-2 border-slate-200 dark:border-slate-800 mt-8">

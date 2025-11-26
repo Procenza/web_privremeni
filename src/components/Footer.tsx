@@ -5,10 +5,8 @@ const Footer = () => {
     <footer className="relative min-h-[50vh] bg-slate-900 dark:bg-black text-white border-t-2 border-slate-900 dark:border-slate-900 overflow-hidden">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto py-16 relative z-10">
         <div className="max-w-7xl mx-auto">
-          {/* 2-Column Grid Layout (Simplified - No Social) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
-
-            {/* Logo & Description */}
+          {/* Logo Only */}
+          <div className="mb-20">
             <div className="space-y-6">
               <svg viewBox="0 0 1486 207" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-8 w-auto text-white dark:text-white">
                 <g transform="matrix(1,0,0,1,-241.78225,-364.244294)">
@@ -25,42 +23,12 @@ const Footer = () => {
                   </g>
                 </g>
               </svg>
-              <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-                {siteConfig.description}
-              </p>
 
               {/* Technical Label */}
               <div className="pt-6 border-t border-slate-800">
                 <p className="font-mono text-xs text-slate-600 uppercase tracking-wider">
-                  EST. 2010 | ZAGREB, HR
+                  EST. 2025 | ZAGREB, HR
                 </p>
-              </div>
-            </div>
-
-            {/* Legal Links */}
-            <div>
-              <h3 className="font-mono text-xs uppercase tracking-widest text-slate-600 mb-6">
-                Legal
-              </h3>
-              <div className="space-y-3">
-                {siteConfig.links.legal.map((link, index) => (
-                  <a
-                    key={index}
-                    href={link.href}
-                    className="block text-sm text-slate-400 hover:text-sky-500 transition-colors font-medium"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-                <button
-                  onClick={() => {
-                    localStorage.removeItem("cookieConsent");
-                    window.location.reload();
-                  }}
-                  className="block text-sm text-slate-400 hover:text-sky-500 transition-colors font-medium text-left"
-                >
-                  Postavke Kolačića
-                </button>
               </div>
             </div>
           </div>
