@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Swiss/Neo-Brutalist Design System - All colors MUST be HSL */
+
+@layer base {
+  :root {
+    /* Swiss Style - Clean White Background */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 186 70% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 186 70% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 0%;
+    --input: 0 0% 96%;
+    --ring: 186 70% 42%;
+
+    --radius: 0;
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .dark {
+    /* Dark Mode - Sky Blue Accent - WCAG AA Compliant */
+    --background: 240 25% 8%;
+    --foreground: 240 10% 95%;
+
+    --card: 245 22% 15%;
+    --card-foreground: 240 10% 95%;
+
+    --popover: 245 22% 15%;
+    --popover-foreground: 240 10% 95%;
+
+    --primary: 186 75% 60%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 245 20% 12%;
+    --secondary-foreground: 240 10% 95%;
+
+    --muted: 245 18% 18%;
+    --muted-foreground: 240 12% 75%;
+
+    --accent: 265 70% 70%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 245 18% 22%;
+    --input: 245 18% 18%;
+    --ring: 186 75% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Better focus visibility for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary ring-2 ring-primary/20;
+  }
+
+  /* Ensure minimum font sizes for labels */
+  label {
+    @apply text-base;
+  }
+}
+
+@layer utilities {
+  .glass-effect {
+    @apply backdrop-blur-xl bg-white/80 dark:bg-white/5;
+  }
+
+  /* Minimum touch target size (44x44px) for accessibility */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Mobile menu slide-in animation */
+  @keyframes slideInFromTop {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
